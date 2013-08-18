@@ -1,2 +1,3 @@
-Course Name: Machine Learning
-Instructor: Andrew Ng
+## Course Name: Machine Learning
+
+### Instructor: Andrew Ng
