@@ -1,3 +1,3 @@
-#### Course Name: Machine Learning
+#### Course Name: Coding the Matrix: Linear Algebra through Computer Science Applications 
 
-##### Instructor: Andrew Ng
+##### Instructor: Philip Klein
