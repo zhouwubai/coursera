@@ -1,14 +1,14 @@
 # version code 1049
 # Please fill out this stencil and submit using the provided submission script.
 
-from orthogonalization import orthogonalize
+from orthogonalization import *
 import orthonormalization
-from mat import Mat
+from mat import *
 from vec import Vec
 from vecutil import list2vec
-from matutil import listlist2mat
-
-
+from matutil import *
+import QR
+from triangular import *
 
 ## Problem 1
 def basis(vlist):
@@ -18,7 +18,8 @@ def basis(vlist):
     Output:
         - a list of linearly independent Vecs with equal span to vlist
     '''
-    pass
+    eps = 1E-20
+    return [v for v in orthogonalize(vlist) if v * v > eps]
 
 
 
@@ -30,7 +31,9 @@ def subset_basis(vlist):
     Output:
         - linearly independent subset of vlist with the same span as vlist
     '''
-    pass
+    eps = 1E-20
+    basis = orthogonalize(vlist)
+    return [vlist[i] for i in range(len(basis)) if basis[i] * basis[i] > eps]
 
 
 
@@ -48,9 +51,15 @@ def orthogonal_vec2rep(Q, b):
         >>> orthogonal_vec2rep(Q, b) == Vec({0, 1},{0: 8, 1: 4})
         True
     '''
-    pass
+    ## grader accept following answer, but I think orthogonal_vec2rep2(Q, b) is right answer
+    ## return b * transpose
+    ## norm = Q * transpose(Q)
+    return b * transpose(Q) ## * Mat(norm.D,{(k,k):1/norm[(k,k)] for k in norm.D[0]})
 
 
+def orthogonal_vec2rep2(Q, b):
+    norm = Q * transpose(Q)
+    return b * transpose(Q) * Mat(norm.D,{(k,k):1/norm[(k,k)] for k in norm.D[0]})
 
 ## Problem 4
 def orthogonal_change_of_basis(A, B, a):
@@ -68,7 +77,8 @@ def orthogonal_change_of_basis(A, B, a):
         >>> orthogonal_change_of_basis(A, B, a) == Vec({0, 1, 2},{0: 8, 1: 2, 2: 6})
         True
     '''
-    pass
+    ## Also we should use orthogonal_vec2rep2(Q, b)
+    return orthogonal_vec2rep(transpose(B), a*A)
 
 
 
@@ -86,7 +96,7 @@ def orthonormal_projection_orthogonal(W, b):
         >>> orthonormal_projection_orthogonal(W, b) == Vec({0, 1, 2},{0: 0, 1: 0, 2: 4})
         True
     '''
-    pass
+    return b - b * transpose(W) * W
 
 
 
@@ -108,7 +118,7 @@ least_squares_Q1 = listlist2mat([[.8,-0.099],[.6, 0.132],[0,0.986]])
 least_squares_R1 = listlist2mat([[10,2],[0,6.08]]) 
 least_squares_b1 = list2vec([10, 8, 6])
 
-x_hat_1 = ...
+x_hat_1 = Vec({0, 1},{0: 1.07665552, 1: 1.0167224})
 
 
 least_squares_A2 = listlist2mat([[3, 1], [4, 1], [5, 1]])
@@ -116,7 +126,7 @@ least_squares_Q2 = listlist2mat([[.424, .808],[.566, .115],[.707, -.577]])
 least_squares_R2 = listlist2mat([[7.07, 1.7],[0,.346]])
 least_squares_b2 = list2vec([10,13,15])
 
-x_hat_2 = ...
+x_hat_2 = Vec({0, 1},{0: 2.5006745, 1: 2.65895954})
 
 
 
@@ -138,5 +148,8 @@ def QR_solve(A, b):
         >>> result * result < 1E-10
         True
     '''
-    pass
+    Q,R = QR.factor(A)
+    C = transpose(A) * b
+    dictR = mat2rowdict(R)
+    return triangular_solve([dictR[k] for k in dictR],list(A.D[1]),C)
 

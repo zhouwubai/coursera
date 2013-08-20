@@ -64,7 +64,7 @@ def coldict2mat(coldict):
     >>> coldict2mat(A) == coldict2mat(B)
     True
     """
-    row_labels = value(coldict).D
+    row_labels = value(coldict)
     return Mat((row_labels, set(keys(coldict))), {(r,c):coldict[c][r] for c in keys(coldict) for r in row_labels})
 
 def rowdict2mat(rowdict):
