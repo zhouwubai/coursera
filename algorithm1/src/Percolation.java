@@ -59,8 +59,13 @@ public class Percolation {
 		int pos = (i-1)*N + j;
 		
 		int upPos = pos - N; // upper site index in wqUF
-		if(upPos <= 0) upPos = 0;
-		wqUF.union(pos,upPos);
+		if(upPos <= 0){ //vTop
+			upPos = 0;
+			wqUF.union(pos,upPos);
+		}else{
+			if(isOpen(i-1,j))
+				wqUF.union(pos, upPos);
+		}
 		
 		if(j>1){//left site exists and is open
 			if(isOpen(i, j-1)){
@@ -77,7 +82,12 @@ public class Percolation {
 		}
 		
 		int downPos = pos + N; // down site index in wqUF
-		if(downPos >= N*N) downPos = N*N + 1;
-		wqUF.union(pos, downPos);
+		if(downPos >= N*N){ //vBottom
+			downPos = N*N + 1;
+			wqUF.union(pos, downPos);
+		}else{
+			if(isOpen(i+1,j))
+				wqUF.union(pos, downPos);
+		}
 	}
 }

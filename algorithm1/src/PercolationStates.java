@@ -107,7 +107,7 @@ public class PercolationStates {
 	
 	public static void main(String[] args) {
 		
-		PercolationStates percState = new PercolationStates(200, 1000);
+		PercolationStates percState = new PercolationStates(200, 100);
 		System.out.println(percState.mean());
 	}
 	
