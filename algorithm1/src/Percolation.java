@@ -77,7 +77,7 @@ public class Percolation {
 		}
 		
 		int downPos = pos + N; // down site index in wqUF
-		if(downPos >= N*N) downPos = N*N;
+		if(downPos >= N*N) downPos = N*N + 1;
 		wqUF.union(pos, downPos);
 	}
 }
