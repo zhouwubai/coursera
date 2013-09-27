@@ -7,6 +7,8 @@ public class PercolationStates {
 	
 	public PercolationStates(int N, int T) {
 		// TODO Auto-generated constructor stub
+		if(N <= 0 || T <= 0)
+			throw new IllegalArgumentException("Given N <= 0 || T <= 0");
 		
 		this.N = N;
 		this.T = T;
@@ -107,8 +109,14 @@ public class PercolationStates {
 	
 	public static void main(String[] args) {
 		
-		PercolationStates percState = new PercolationStates(200, 100);
-		System.out.println(percState.mean());
+		int N = Integer.parseInt(args[0]);
+		int T = Integer.parseInt(args[1]);
+		PercolationStates percState = new PercolationStates(N, T);
+		
+		String confidence = percState.confidenceLo() + ", " + percState.confidenceHi();
+        StdOut.println("mean                    = " + percState.mean());
+        StdOut.println("stddev                  = " + percState.stddev());
+        StdOut.println("95% confidence interval = " + confidence);
 	}
 	
 }
