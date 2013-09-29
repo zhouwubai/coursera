@@ -1,11 +1,11 @@
 
-public class PercolationStates {
+public class PercolationStats {
 
 	private int N;
 	private int T;
 	private double[] px; // fraction of open site in each experiment
 	
-	public PercolationStates(int N, int T) {
+	public PercolationStats(int N, int T) {
 		// TODO Auto-generated constructor stub
 		if(N <= 0 || T <= 0)
 			throw new IllegalArgumentException("Given N <= 0 || T <= 0");
@@ -85,7 +85,7 @@ public class PercolationStates {
 	 * @param n
 	 * @return
 	 */
-	public int[] randomizeInPlace(int n){
+	private int[] randomizeInPlace(int n){
 		int[] array = new int[n];
 		for(int i = 0; i < n; i++){
 			array[i] = i;
@@ -111,7 +111,7 @@ public class PercolationStates {
 		
 		int N = Integer.parseInt(args[0]);
 		int T = Integer.parseInt(args[1]);
-		PercolationStates percState = new PercolationStates(N, T);
+		PercolationStats percState = new PercolationStats(N, T);
 		
 		String confidence = percState.confidenceLo() + ", " + percState.confidenceHi();
         StdOut.println("mean                    = " + percState.mean());

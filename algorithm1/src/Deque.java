@@ -6,7 +6,7 @@ public class Deque<Item> implements Iterable<Item>{
 
 	private Node first;
 	private Node last;
-	int count;
+	private int count;
 	
 	public Deque() {
 		// TODO Auto-generated constructor stub

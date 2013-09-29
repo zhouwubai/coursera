@@ -7,19 +7,20 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 	private int last = 0;
 	private int capacity;
 	
-	public RandomizedQueue(int initCapacity) {
-		// TODO Auto-generated constructor stub
-		//generic type
-		this.capacity = initCapacity;
-		items = new Object[initCapacity]; 
-	}
+//	public RandomizedQueue(int initCapacity) {
+//		// TODO Auto-generated constructor stub
+//		//generic type
+//		this.capacity = initCapacity;
+//		items = new Object[initCapacity]; 
+//	}
 	
 	
 	/**
 	 * initial size is 10 
 	 */
 	public RandomizedQueue(){
-		this(10);
+		this.capacity = 10;
+		items = new Object[10]; 
 	}
 	
 	
