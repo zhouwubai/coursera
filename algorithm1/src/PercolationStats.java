@@ -1,4 +1,3 @@
-
 public class PercolationStats {
 
 	private int N;

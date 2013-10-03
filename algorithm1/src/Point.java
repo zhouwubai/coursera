@@ -1,16 +1,7 @@
-/*************************************************************************
- * Name:
- * Email:
- *
- * Compilation:  javac Point.java
- * Execution:
- * Dependencies: StdDraw.java
- *
- * Description: An immutable data type for points in the plane.
- *
- *************************************************************************/
-
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 public class Point implements Comparable<Point> {
 
@@ -46,9 +37,9 @@ public class Point implements Comparable<Point> {
         /* YOUR CODE HERE */
     	if(this.x == that.x) {
     		if(this.y == that.y)
-    			return Double.MIN_VALUE;
+    			return Double.NEGATIVE_INFINITY;
     		else
-    			return Double.MAX_VALUE;
+    			return Double.POSITIVE_INFINITY;
     	}
     	
     	return (that.y - this.y)/(double)(that.x - this.x);
@@ -102,5 +93,17 @@ public class Point implements Comparable<Point> {
     // unit test
     public static void main(String[] args) {
         /* YOUR CODE HERE */
+    	Point p1 = new Point(2,3);
+    	Point p2 = new Point(1,1);
+    	Point p3 = new Point(3,2);
+    	Point[] points = {p1,p2,p3};
+    	
+    	int result = p1.SLOPE_ORDER.compare(p1, p3);
+    	StdOut.print(result);
+    	List<Point> ps = Arrays.asList(points);
+    	Collections.sort(ps,p1.SLOPE_ORDER);
+    	for(Point p : ps) {
+    		StdOut.print(p.toString());
+    	}
     }
 }
