@@ -1,0 +1,3 @@
+In this file, I try to implement some basic
+algorithm by myself. Take some advice from 
+algs.jar sometimes...
