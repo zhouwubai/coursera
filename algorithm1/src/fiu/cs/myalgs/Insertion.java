@@ -31,8 +31,10 @@ public class Insertion {
     
     public static void main(String[] args) {
 		
-    	
-    	
+    	Integer[] arr = SortUtil.testArrayWithRepeat(20);
+    	SortUtil.show(arr);
+    	Insertion.sort(arr);
+    	SortUtil.show(arr);
 	}
 	
 }

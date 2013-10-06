@@ -30,11 +30,19 @@ public class SortUtil {
     }
 
    // print array to standard output
-	public static void show(Comparable[] a) {
+	public static void show(Object[] a) {
         for (int i = 0; i < a.length; i++) {
-            System.out.println(a[i]);
+            System.out.print(a[i] + " ");
         }
+        System.out.println();
     }
+	
+	public static void show(int[] a) {
+		for (int i = 0; i < a.length; i++) {
+            System.out.print(a[i] + " ");
+        }
+		System.out.println();
+	}
     
 	/************************************************
 	 * Helper sorting functions
@@ -61,6 +69,34 @@ public class SortUtil {
 		int swap = a[i];
 		a[i] = a[j];
 		a[j] = swap;
+	}
+	
+	
+	/************************************************
+	 * generate a random int array which has length N
+	 ************************************************/
+	public static Integer[] testArrayWithNoRepeat(int N) {
+		Integer[] arr = new Integer[N];
+		for(int i = 0; i < N; i ++) {
+			arr[i] = i;
+		}
+		
+		for(int i = 0; i < N; i ++) {
+			int rIdx = (int) (Math.random() * (N - i)) + i;
+			exch(arr, i, rIdx);
+		}
+		return arr;
+	}
+	
+	
+	public static Integer[] testArrayWithRepeat(Integer N) {
+		Integer[] arr = new Integer[N];
+		
+		for(int i = 0; i < N; i ++) {
+			int num = (int) (Math.random() * N);
+			arr[i] = num;
+		}
+		return arr;
 	}
 	
 }
