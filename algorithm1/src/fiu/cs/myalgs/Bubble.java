@@ -1,20 +1,20 @@
 package fiu.cs.myalgs;
 
-public class Selection {
+public class Bubble {
 
-	private Selection() { }
-	
 	public static void sort(Comparable a[]) {
 		int N = a.length;
-		for(int i = 0; i < N; i++) {
-			int minIdx = i;
-			for(int j = i; j < N; j ++) {
-				if(SortUtil.less(a[j], a[minIdx])) {
-					minIdx = j;
+		for(int i = 0; i < N; i ++) {
+			boolean flag = false;
+			for(int j = N - 1; j > i; j --) {
+				if(SortUtil.less(a[j], a[j-1])) {
+					SortUtil.exch(a, j, j-1);
+					flag = true;
 				}
 			}
-			SortUtil.exch(a, i, minIdx);
 			assert SortUtil.isSorted(a, 0, i);
+			if(!flag)
+				break;
 		}
 		assert SortUtil.isSorted(a);
 	}
@@ -24,7 +24,7 @@ public class Selection {
 		
 		Integer[] arr = SortUtil.testArrayWithRepeat(20);
     	SortUtil.show(arr);
-    	Selection.sort(arr);
+    	Bubble.sort(arr);
     	SortUtil.show(arr);
 		
 	}
