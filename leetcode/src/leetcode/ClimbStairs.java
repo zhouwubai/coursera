@@ -20,4 +20,12 @@ public class ClimbStairs {
         }
         return steps[n-1];
     }
+	
+	public static void main(String[] args) {
+		
+		int[] test = {1,2,3,4};
+		int i = 1;
+		System.out.println(i++);
+		
+	}
 }
