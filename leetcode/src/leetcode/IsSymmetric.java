@@ -1,5 +1,7 @@
 package leetcode;
 
+import java.util.LinkedList;
+
 public class IsSymmetric {
 
 	public boolean isSymmetric(TreeNode root) {
@@ -10,6 +12,7 @@ public class IsSymmetric {
     
     public boolean isSym(TreeNode left, TreeNode right) {
         
+    	LinkedList<TreeNode> test = new LinkedList<TreeNode>();
         if(left == null && right == null) {
             return true;
         } else if(left != null && right != null) {
@@ -23,6 +26,15 @@ public class IsSymmetric {
         }
         
     }
+    
+    public static void main(String[] args) {
+		
+    	LinkedList<TreeNode> test = new LinkedList<TreeNode>();
+    	test.add(null);
+    	test.add(null);
+    	System.out.println(test.size());
+    	
+	}
 	
 }
 
