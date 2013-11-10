@@ -1,5 +1,7 @@
 package leetcode;
 
+import java.util.ArrayList;
+
 public class ClimbStairs {
 
 	// this is very computationaly expensive
@@ -23,9 +25,15 @@ public class ClimbStairs {
 	
 	public static void main(String[] args) {
 		
-		int[] test = {1,2,3,4};
-		int i = 1;
-		System.out.println(i++);
+		ArrayList<Integer> test = new ArrayList<Integer>();
+		test.add(2);
+		change(test);
+		System.out.println(test.get(1));
+		int[] arr = {1,3,3};
 		
+	}
+	
+	public static void change(ArrayList<Integer> a) {
+		a.add(3);
 	}
 }
