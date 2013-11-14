@@ -30,6 +30,8 @@ public class ClimbStairs {
 		change(test);
 		System.out.println(test.get(1));
 		int[] arr = {1,3,3};
+		System.out.println((int)Math.log10(2000));
+
 		
 	}
 	
