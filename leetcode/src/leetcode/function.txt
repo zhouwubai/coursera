@@ -4,6 +4,16 @@ function throw exceptions:  add(E e)/remove()/element()
 function throw no exceptions:  offer(E e)/poll()/peek()
 
 
-Arrays
+Arrays (Operate on primitive array)
 This class contains various methods for manipulating arrays (such as sorting and searching). 
 This class also contains a static factory that allows arrays to be viewed as lists.
+Arrays.sort(T[] arr)
+Arrays.copyOf(T[] arr, int newLength) / Arrays.copyOf(T[] arr, int from, int to)
+
+Collections (Operate on collections such as list)
+
+Collections.copy() / new ArrayList(int capacity);
+That's a very good question and it almost certainly has to do with the fact 
+that setting a collections capacity does not necessarily allocate the underlying objects
+
+char/Character
