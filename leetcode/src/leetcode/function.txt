@@ -17,3 +17,7 @@ That's a very good question and it almost certainly has to do with the fact
 that setting a collections capacity does not necessarily allocate the underlying objects
 
 char/Character
+
+
+String s
+s.length()/s.substring(int begin, int end)
